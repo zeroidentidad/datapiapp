@@ -1,4 +1,6 @@
+import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import TopNavigation from './components/TopNavigation';
 import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
 import HomeListScreen from './screens/HomeListScreen';
@@ -10,14 +12,15 @@ const AppNavigator = createStackNavigator({
 }, {
     defaultNavigationOptions: ({ navigation }) => {
         return {
-            title: 'Datos Abiertos México 🇲🇽',
+            title: ' Datos Abiertos  🇲🇽',
             headerStyle: {
-                backgroundColor: '#48BBEC',
+                backgroundColor: '#a3a375',
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000000',
             headerTitleStyle: {
                 fontWeight: 'bold',
-            }            
+            },
+            headerRight: (<TopNavigation navigation={navigation} />)                        
         }
     },
     initialRouteName: 'Home'

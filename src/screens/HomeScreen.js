@@ -13,12 +13,6 @@ export default class HomeScreen extends React.Component {
           />
         </TouchableHighlight>
         <View style={styles.bottomBox}>
-          <Button
-            title="Ir a About Screen"
-            onPress={() =>
-              navigate('About')
-            }
-          /> 
         </View>     
       </View>
     );
