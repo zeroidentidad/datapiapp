@@ -1,14 +1,16 @@
 import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import TopNavigation from './components/TopNavigation';
-import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
+import HomeScreen from './screens/HomeScreen';
 import ListDBScreen from './screens/ListDBScreen';
+import PacksScreen from './screens/PacksScreen';
 
 const AppNavigator = createStackNavigator({
+    About: AboutScreen,
     Home: HomeScreen,
     DBs: ListDBScreen,
-    About: AboutScreen
+    Packs: PacksScreen,
 }, {
     defaultNavigationOptions: ({ navigation }) => {
         return {

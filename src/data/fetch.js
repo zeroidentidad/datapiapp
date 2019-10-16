@@ -1,6 +1,6 @@
 const apiDev = 'https://api.datos.gob.mx/v1/';
-const apiDev2 = 'https://adela.datos.gob.mx/api/v1/';
-const apiDev3 = 'https://datos.gob.mx/busca/api/3/action/package_search';
+const apiDev2 = 'https://datos.gob.mx/busca/api/3/action/package_search';
+const apiDev3 = 'https://adela.datos.gob.mx/api/v1/';
 
 export default {
     async fetchHome(){
@@ -31,13 +31,14 @@ export default {
             console.error(error);
         }
     },
-    async fetchPaquetes(searchTerm) {
+    async fetchPaquetes(searchTerm = 'BUSQUEDA') {
         try {
-            const response = await fetch(apiDev3 + '?q=' + searchTerm, {
+            const response = await fetch(apiDev2 + '?q=' + searchTerm, {
                 "method": "GET"
             });
+            
             const responseJson = await response.json();
-            return responseJson.results;
+            return responseJson.result.results;
         } catch (error) {
             console.error(error);
         }

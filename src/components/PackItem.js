@@ -2,16 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Linking } from 'react-native';
 import FadeInView from './FadeInView';
 
-export default DBItem = (props) => {
+export default PackItem = (props) => {
+
+    const img = (!props.organization.image_url || props.organization.image_url.length == 0 || typeof props.organization.image_url == "undefined") ? require('../assets/database_ic.png') : { uri: props.organization.image_url };
+
+    options = { year: "numeric", month: "numeric", day: "numeric" };
+
     return (
     <FadeInView style={styles.row} >
         <Image
-            source={require('../assets/database_ic.png')}
+            source={img}
             style={styles.thumbnail} />
         <View style={styles.rightBox}>
-            <Text style={styles.fact}>{props.fact}</Text>
-            <Text style={styles.organization}>{props.organization}</Text>
-            <Text style={styles.url} onPress={() => Linking.openURL(props.url)}>Ir: {props.url}</Text>
+            <Text style={styles.title}>{props.title}</Text>
+            <Text style={styles.organization}>Creación: {new Date(props.organization.created).toLocaleDateString('es-ES', options)}</Text>
+            <Text style={styles.url} onPress={() => Linking.openURL(props.resources[0].url)}>Ir: {props.resources[0].url}</Text>
         </View>
     </FadeInView>
     );
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     rightBox: {
         flex: 1,
     },
-    fact: {
+    title: {
         fontSize: 16,
         marginBottom: 8,
         textAlign: 'center',

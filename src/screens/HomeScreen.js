@@ -12,7 +12,6 @@ export default class HomeScreen extends React.Component {
 
   async componentDidMount() {
     const indicadores = await fetch.fetchHome();
-    console.log(indicadores);
     this.setState({ indicadores });
   }   
 

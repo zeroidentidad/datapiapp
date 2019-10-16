@@ -1,40 +1,41 @@
 import React from 'react';
 import { Text, View, FlatList, StyleSheet } from 'react-native';
-import DBItem from '../components/DBItem';
+import PackItem from '../components/PackItem';
 import SearchBar from '../components/SearchBar';
 import Empty from '../utils/Empty';
 import fetch from '../data/fetch';
 
-export default class ListDBScreen extends React.Component {
+export default class PacksScreen extends React.Component {
 
     state = {
-        basedatos: [],
-        basedatosSearch: [], 
+        paquete: [],
+        paqueteSearch: [], 
     }
 
     async componentDidMount() {
-        const basedatos = await fetch.fetchDBs();
-        this.setState({ basedatos });
+        const paquete = await fetch.fetchPaquetes();
+        console.log(paquete);
+        this.setState({ paquete });
     }
 
-    searchDB = async (query) => {
-        let basedatosSearch = [];
+    searchPack = async (query) => {
+        let paqueteSearch = [];
         if (query) {
-            basedatosSearch = await fetch.fetchDBs(query);
+            paqueteSearch = await fetch.fetchPaquetes(query);
         }
-        this.setState({ basedatosSearch });
+        this.setState({ paqueteSearch });
     }; 
 
     render() {
         const { navigate } = this.props.navigation;
-        const dbList = this.state.basedatosSearch.length > 0 ? this.state.basedatosSearch : this.state.basedatos;
+        const paquetes = this.state.paqueteSearch.length > 0 ? this.state.paqueteSearch : this.state.paquete;
         return (
         <View style={styles.main}>
-            <Text style={styles.textTitle}>Bases de datos publicadas:</Text>
-            <SearchBar search={this.searchDB} tipoSearch="organización" />            
+            <Text style={styles.textTitle}>Paquetes de datos:</Text>
+            <SearchBar search={this.searchPack} tipoSearch="por frase (ej. 'BUSQUEDA')" />            
             <FlatList
-                data={dbList}
-                renderItem={({ item }) => <DBItem {...item} />}
+                data={paquetes}
+                renderItem={({ item }) => <PackItem {...item} />}
                 keyExtractor={(item, index) => index.toString()}
                 ListEmptyComponent={Empty}
             />
