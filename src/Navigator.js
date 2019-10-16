@@ -3,12 +3,12 @@ import { createAppContainer, createStackNavigator, createSwitchNavigator } from 
 import TopNavigation from './components/TopNavigation';
 import HomeScreen from './screens/HomeScreen';
 import AboutScreen from './screens/AboutScreen';
-import HomeListScreen from './screens/HomeListScreen';
+import ListDBScreen from './screens/ListDBScreen';
 
 const AppNavigator = createStackNavigator({
     Home: HomeScreen,
-    About: AboutScreen,
-    List: HomeListScreen
+    DBs: ListDBScreen,
+    About: AboutScreen
 }, {
     defaultNavigationOptions: ({ navigation }) => {
         return {

@@ -1,18 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight, FlatList, Text } from 'react-native';
+import HomeItem from '../components/HomeItem';
+import Empty from '../utils/Empty';
+import fetch from '../data/fetch';
+
 export default class HomeScreen extends React.Component {
+
+  state = {
+      indicadores: [],
+    } 
+
+  async componentDidMount() {
+    const indicadores = await fetch.fetchHome();
+    console.log(indicadores);
+    this.setState({ indicadores });
+  }   
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.topBox} onPress={() => navigate('List')}>
+        <Text style={styles.textTitle}>Indicadores generales:</Text>
+        <TouchableHighlight style={styles.topBox} >
           <Image
             style={styles.homeBanner}
             source={require('../assets/houses.png')}
           />
         </TouchableHighlight>
         <View style={styles.bottomBox}>
+          <FlatList
+            data={this.state.indicadores}
+            renderItem={({ item }) => <HomeItem {...item} />}
+            keyExtractor={(item, index) => index.toString()}
+            ListEmptyComponent={Empty}
+          />
         </View>     
       </View>
     );
@@ -38,5 +59,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     width: undefined,
     height: undefined,
+  },
+  textTitle: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#000000',
+    alignSelf: 'center'
   }
 });
