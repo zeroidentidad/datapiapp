@@ -6,11 +6,11 @@ export default HomeItem = (props) => {
     return (
     <FadeInView style={styles.row} >
         <Image
-            source={{ uri: props.images }}
+            source={require('../assets/database_ic.png')}
             style={styles.thumbnail} />
         <View style={styles.rightBox}>
-            <Text style={styles.name}>{props.name}</Text>
-            <Text style={styles.address}>{props.address}</Text>
+            <Text style={styles.fact}>{props.fact}</Text>
+            <Text style={styles.organization}>{props.organization}</Text>
         </View>
     </FadeInView>
     );
@@ -26,18 +26,20 @@ const styles = StyleSheet.create({
         borderColor: '#d6d7da',
     },
     thumbnail: {
-        width: 53,
-        height: 81,
+        width: 48,
+        height: 48,
     },
     rightBox: {
         flex: 1,
     },
-    name: {
-        fontSize: 20,
+    fact: {
+        fontSize: 16,
         marginBottom: 8,
         textAlign: 'center',
+        fontWeight: 'bold'
     },
-    address: {
+    organization: {
         textAlign: 'center',
+        fontSize: 14,
     }
 });    

@@ -12,12 +12,19 @@ export default {
             console.log(error);
         }
     },
-    async fetchDBs(dbmane) {
-        //console.log(apiDev + '?' + dbmane)
+    async fetchDBs(dbmane='') {
         try {
-            const response = await fetch(apiDev + '?' + dbmane, {
-                "method": "GET"
-            });            
+            let response = '';
+            if (dbmane!=''){
+                response = await fetch(apiDev + 'gobmx.facts?slug=' + dbmane.toLowerCase(), {
+                    "method": "GET"
+                }); 
+            }else{
+                response = await fetch(apiDev + 'gobmx.facts', {
+                    "method": "GET"
+                }); 
+            }
+           
             const responseJson = await response.json();
             return responseJson.results;
         } catch (error) {
