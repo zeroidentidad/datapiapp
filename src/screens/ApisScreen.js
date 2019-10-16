@@ -1,40 +1,40 @@
 import React from 'react';
 import { Text, View, FlatList, StyleSheet } from 'react-native';
-import PackItem from '../components/PackItem';
+import ApiItem from '../components/ApiItem';
 import SearchBar from '../components/SearchBar';
 import Empty from '../utils/Empty';
 import fetch from '../data/fetch';
 
-export default class PacksScreen extends React.Component {
+export default class ApisScreen extends React.Component {
 
     state = {
-        paquete: [],
-        paqueteSearch: [], 
+        api: [],
+        apiSearch: [], 
     }
 
     async componentDidMount() {
-        const paquete = await fetch.fetchPaquetes();
-        this.setState({ paquete });
+        const api = await fetch.fetchApis();
+        this.setState({ api });
     }
 
-    searchPack = async (query) => {
-        let paqueteSearch = [];
+    searchDB = async (query) => {
+        let apiSearch = [];
         if (query) {
-            paqueteSearch = await fetch.fetchPaquetes(query);
+            apiSearch = await fetch.fetchApis(query);
         }
-        this.setState({ paqueteSearch });
+        this.setState({ apiSearch });
     }; 
 
     render() {
         const { navigate } = this.props.navigation;
-        const paquetes = this.state.paqueteSearch.length > 0 ? this.state.paqueteSearch : this.state.paquete;
+        const Apis = this.state.apiSearch.length > 0 ? this.state.apiSearch : this.state.api;
         return (
         <View style={styles.main}>
-            <Text style={styles.textTitle}>Paquetes de datos:</Text>
-            <SearchBar search={this.searchPack} tipoSearch="por frase (ej. 'BUSQUEDA')" />            
+                <Text style={styles.textTitle}>Catálogo APIs activas:</Text>
+            <SearchBar search={this.searchDB} tipoSearch="nombre endpoint" />            
             <FlatList
-                data={paquetes}
-                renderItem={({ item }) => <PackItem {...item} />}
+                data={Apis}
+                renderItem={({ item }) => <ApiItem {...item} />}
                 keyExtractor={(item, index) => index.toString()}
                 ListEmptyComponent={Empty}
             />

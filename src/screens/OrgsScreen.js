@@ -14,7 +14,6 @@ export default class OrgsScreen extends React.Component {
 
     async componentDidMount() {
         const org = await fetch.fetchOrgs();
-        console.log(org);
         this.setState({ org });
     }
 

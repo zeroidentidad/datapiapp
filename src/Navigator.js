@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import ListDBScreen from './screens/ListDBScreen';
 import PacksScreen from './screens/PacksScreen';
 import OrgsScreen from './screens/OrgsScreen';
+import ApisScreen from './screens/ApisScreen';
 
 const AppNavigator = createStackNavigator({
     About: AboutScreen,
@@ -13,6 +14,7 @@ const AppNavigator = createStackNavigator({
     DBs: ListDBScreen,
     Packs: PacksScreen,
     Orgs: OrgsScreen,
+    Apis: ApisScreen
 }, {
     defaultNavigationOptions: ({ navigation }) => {
         return {

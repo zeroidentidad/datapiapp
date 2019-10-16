@@ -36,7 +36,7 @@ export default class TopNavigation extends React.Component {
                 <MenuItem onPress={() => navigate('DBs')} textStyle={{ color: '#000', fontSize: 16 }}>Bases de datos publicadas</MenuItem>
                 <MenuItem onPress={() => navigate('Packs')} textStyle={{ color: '#000', fontSize: 16 }}>Paquetes de datos</MenuItem>
                 <MenuItem onPress={() => navigate('Orgs')} textStyle={{ color: '#000', fontSize: 16 }}>Organizaciones publicadoras</MenuItem>
-                <MenuItem textStyle={{ color: '#000', fontSize: 16 }}>Catálogo APIs activas</MenuItem>
+                <MenuItem onPress={() => navigate('Apis')} textStyle={{ color: '#000', fontSize: 16 }}>Catálogo APIs activas</MenuItem>
                 <MenuItem onPress={() =>navigate('About')} textStyle={{ color: '#000', fontSize: 16 }}>Acerca</MenuItem>
             </Menu>
         )

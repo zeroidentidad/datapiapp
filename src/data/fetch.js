@@ -12,11 +12,11 @@ export default {
             console.log(error);
         }
     },
-    async fetchDBs(dbmane='') {
+    async fetchDBs(dbname='') {
         try {
             let response = '';
-            if (dbmane!=''){
-                response = await fetch(apiDev + 'gobmx.facts?slug=' + dbmane.toLowerCase(), {
+            if (dbname!=''){
+                response = await fetch(apiDev + 'gobmx.facts?slug=' + dbname.toLowerCase(), {
                     "method": "GET"
                 }); 
             }else{
@@ -75,5 +75,24 @@ export default {
         } catch (error) {
             console.error(error);
         }
-    },    
+    },
+    async fetchApis(apiname='') {
+        try {
+            let response = '';
+            if (apiname!=''){
+                response = await fetch(apiDev + 'api-catalog?endpoint=' + apiname, {
+                    "method": "GET"
+                }); 
+            }else{
+                response = await fetch(apiDev + 'api-catalog', {
+                    "method": "GET"
+                }); 
+            }
+           
+            const responseJson = await response.json();
+            return responseJson.results;
+        } catch (error) {
+            console.error(error);
+        }
+    }        
 }
