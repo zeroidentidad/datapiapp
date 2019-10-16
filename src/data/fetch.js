@@ -42,5 +42,38 @@ export default {
         } catch (error) {
             console.error(error);
         }
-    }
+    },
+    async fetchOrgs(tipo = '') {
+        try {
+            let response = '';
+            if (tipo != '') {
+
+                let q = '';
+                switch (tipo.toLowerCase()) {
+                    case 'estatal':
+                    q = 'state';
+                    break;
+                    case 'autonoma':
+                    q = 'autonomous';
+                    break;
+                    default:
+                    q = tipo.toLowerCase();
+                    break;
+                }                
+
+                response = await fetch(apiDev3 + 'organizations?gov_type=' + q, {
+                    "method": "GET"
+                });
+            } else {
+                response = await fetch(apiDev3 + 'organizations', {
+                    "method": "GET"
+                });
+            }
+
+            const responseJson = await response.json();
+            return responseJson.results;
+        } catch (error) {
+            console.error(error);
+        }
+    },    
 }

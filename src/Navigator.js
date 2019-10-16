@@ -5,12 +5,14 @@ import AboutScreen from './screens/AboutScreen';
 import HomeScreen from './screens/HomeScreen';
 import ListDBScreen from './screens/ListDBScreen';
 import PacksScreen from './screens/PacksScreen';
+import OrgsScreen from './screens/OrgsScreen';
 
 const AppNavigator = createStackNavigator({
     About: AboutScreen,
     Home: HomeScreen,
     DBs: ListDBScreen,
     Packs: PacksScreen,
+    Orgs: OrgsScreen,
 }, {
     defaultNavigationOptions: ({ navigation }) => {
         return {
