@@ -31,6 +31,7 @@ export default class ListDBScreen extends React.Component {
         const dbList = this.state.basedatosSearch.length > 0 ? this.state.basedatosSearch : this.state.basedatos;
         return (
         <View style={styles.main}>
+            <Text style={styles.textTitle}>Bases de datos publicadas:</Text>
             <SearchBar search={this.searchDB} tipoSearch="organización" />            
             <FlatList
                 data={dbList}
@@ -52,5 +53,11 @@ const styles = StyleSheet.create({
     },
     main: {
         marginTop: 4
-    }
+    },
+    textTitle: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#000000',
+        alignSelf: 'center'
+    }    
 });
