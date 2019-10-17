@@ -6,7 +6,7 @@ export default AboutScreen = () => {
       <View style={styles.about}>
         <Text style={styles.title}>Sobre DatApiApp:</Text>
         <Text style={styles.text}>{
-          `Esta app la realice como practica de solución en desarrollo móvil. Trata sobre el acceso y consulta a datos abiertos del gobierno mexicano usando la api de la plataforma de registros de información pública en organizaciones federales, estatales, municipales y autónomas.\n\n\n\n- Esta app y su código queda de acceso libre para quien desee usarlo.
+          `Esta app la realice como practica de solución en desarrollo móvil. Trata sobre el acceso y consulta a datos abiertos del gobierno mexicano usando la api de la plataforma de registros de información pública en organizaciones federales, estatales, municipales y autónomas.\n\n\n\n- Esta app y su código queda de acceso libre para quien desee usarlo.\n\n- Esta app fue un proyecto de entrenamiento personal de 2 dias, por lo que de presentarse errores a futuro no se atenderán a brevedad por ser un proyecto sin interes de darle continuidad.
           `}
         </Text>
       </View>
